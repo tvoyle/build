@@ -6,12 +6,10 @@ COPY Gemfile /app/
 RUN gem install bundler \
     && apt-get update \
     && apt-get install -y --no-install-recommends libpq-dev \
-    && rm -rf /var/lib/apt/lists/* \
-
-RUN bundle install
-
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . /app
+RUN bundle install
+
 EXPOSE 9292
-ENTRYPOINT ["bash"]
-#CMD ["-i", "-c", "bundle", "exec", "rackup", "config.ru", "-o", "0.0.0.0"]
+CMD ["bundle", "exec", "rackup", "config.ru", "-o", "0.0.0.0"]
