@@ -530,15 +530,34 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
         }
 
         // media kind
-        if (control.type == 'inputMedia')
-            bodyTag.attrs.mediatype = control.kind.toLowerCase() + '/*';
+        if (control.type == 'inputMedia') {
 
-        // appearance
+            if (control.kind == "Signature") {
+                bodyTag.attrs.appearance = "signature";
+                bodyTag.attrs.mediatype = 'image/*';
+            }
+            else if (control.kind == "Draw") {
+                bodyTag.attrs.appearance = "draw";
+                bodyTag.attrs.mediatype = 'image/*';
+            }
+            else if (control.kind == "Annotated Image") {
+                bodyTag.attrs.appearance = "annotate";
+                bodyTag.attrs.mediatype = 'image/*';
+            }
+            else if (control.kind == "Selfie Image" ) {
+                bodyTag.attrs.appearance = "new-front";
+                bodyTag.attrs.mediatype = 'image/*';
+            } else
+                bodyTag.attrs.mediatype = control.kind.toLowerCase() + '/*';
+        }
+
         if (control.appearance != null)
         {
             var finalAppearance = appearanceTypes[control.appearance];
             if (finalAppearance != null)
                 bodyTag.attrs.appearance = finalAppearance;
+            else
+                bodyTag.attrs.appearance = control.appearance;
         }
         if ((control.type === 'inputDate') && ((control.kind === 'Year and Month') || (control.kind === 'Year')))
             bodyTag.attrs.appearance = (control.kind === 'Year') ? 'year' : 'month-year';
