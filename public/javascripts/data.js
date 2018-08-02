@@ -138,7 +138,9 @@ var dataNS = odkmaker.namespace.load('odkmaker.data');
         inputMedia: 'upload',
         inputBarcode: 'input',
         inputSelectOne: 'select1',
-        inputSelectMany: 'select'
+        inputSelectMany: 'select',
+        inputTrigger: 'trigger'
+
     };
     var appearanceTypes = {
         'Show Map (GPS)': 'maps',

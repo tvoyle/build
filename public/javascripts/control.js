@@ -773,6 +773,7 @@
                         description: 'Specify the rules that decide how the form will branch.',
                         value: [],
                         summary: false } },
+        inputTrigger: {},
         metadata: {
           name:       { name: 'Data Name',
                         type: 'text',
@@ -855,6 +856,10 @@
                 'property set to reference this question; for example: <code>${/xpath/to/this/select/many} = \'other\'</code>',
                 'You can specify how many options the form filler is allowed to choose with the Response Count property.'
             ]
+        },
+        inputTrigger: {
+            name: "Trigger",
+            description: 'Presents a single checkbox to the user for confirmation'
         },
         group: {
             name: 'Group',
